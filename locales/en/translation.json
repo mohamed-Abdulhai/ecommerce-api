@@ -1,0 +1,4 @@
+{
+    "notFoundRoute":"Not found this route",
+    "tooManyReq":"Too many requests from this IP, please try again after 60 minutes"
+}
