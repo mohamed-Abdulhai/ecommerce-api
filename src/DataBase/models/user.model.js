@@ -15,12 +15,6 @@ const schema = new mongoose.Schema({
     password:{
         type:String,
     },
-    googleId: { 
-        type: String 
-    },
-    facebookId: {
-        type: String 
-    },
     isActive: {
         type: Boolean,
         default: true
@@ -45,4 +39,4 @@ const schema = new mongoose.Schema({
 
 schema.plugin(mongoosePaginate)
 
-export const Brand = mongoose.model('Brand',schema)
+export const User = mongoose.model('User',schema)

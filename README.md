@@ -1,6 +1,6 @@
 # E-Commerce API
 
-Welcome to the E-Commerce API, a backend service built using **Express.js**. This API supports multilingual functionality (**Arabic** and **English**) via **i18next**, user authentication using **access tokens** and **refresh tokens**, and secure payment processing through **Stripe**. It also incorporates **OAuth** for seamless user login and adheres to the **MIT License**.
+Welcome to the E-Commerce API, a backend service built using **Express.js**. This API supports multilingual functionality (**Arabic** and **English**) via **i18next**, user authentication using **access tokens** and **refresh tokens**, and secure payment processing through **Stripe**. Adheres to the **MIT License**.
 
 ---
 
@@ -8,7 +8,6 @@ Welcome to the E-Commerce API, a backend service built using **Express.js**. Thi
 
 - **Authentication and Authorization**:
   - Secure login and registration using **JWT** (access and refresh tokens).
-  - OAuth integration for third-party authentication.
   - Cookies for storing and managing tokens securely.
 
 - **Payment Processing**:
@@ -30,7 +29,6 @@ Welcome to the E-Commerce API, a backend service built using **Express.js**. Thi
 - **npm** (v8 or above)
 - A **MongoDB** database
 - A **Stripe** account for payment processing
-- OAuth credentials for third-party login (e.g., Google)
 
 ---
 

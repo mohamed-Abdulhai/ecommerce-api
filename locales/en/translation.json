@@ -1,4 +1,43 @@
 {
-    "notFoundRoute":"Not found this route",
-    "tooManyReq":"Too many requests from this IP, please try again after 60 minutes"
+    "server":{
+        "notFoundRoute": "Not found this route",
+        "tooManyReq": "Too many requests from this IP, please try again after 60 minutes"
+    },
+    "auth": {
+        
+        "emailExists": "Email already exists",
+        "phoneExists": "Phone already exists",
+        "userNameMin": "Username must be at least 3 characters long",
+        "userNameMax": "Username must not exceed 50 characters",
+        "userNameRequired": "Username is required",
+        "emailPattern": "Email must be string",
+        "emailString": "Invalid email format",
+        "passwordMin": "Password must be at least 8 characters long",
+        "passwordMax": "Password must not exceed 50 characters",
+        "passwordRequired": "Password is required",
+        "phoneString": "Phone number must be valid and follow international format (e.g., +1234567890)",
+        "phoneRequired": "Phone Number is required",
+        "OldPaswordRequired": "Ol password required",
+        "unauthenticated": "unauthenticated",
+        "invalidToken": "Invalid token",
+        "invalidTokenMsg": "Token is not valid or expired",
+        "invalidCredentials": "Invalid credentials",
+        "userNotFound": "user not found",
+        "unauthorize": "unauthorize",
+        "emailOrPhone": "Please enter an email address or phone number",
+        "UserCreated": "User created successfully",
+        "UserUpdated": "User updated successfully",
+        "UserDeleted": "User deleted successfully",
+        "UserBlocked": "User blocked successfully",
+        "UserUnblocked": "User unblocked successfully",
+        "UserResetPassword": "User password reset successfully",
+        "invalidEmailPhonePassword": "email/phone or password is invalid",
+        "userLogin": "User is logged in successfully",
+        "userLogout": "User logged out successfully",
+        "userAuthenticated": "user is authenticated",
+        "tokenRefReshed": "Token was successfully refreshed",
+        "passwordChanged": "Password changed successfully",
+        "notTrueOldPassword": "Old password not ture",
+        "emailNotConfirmed":"Email was not confirmed"
+    }
 }

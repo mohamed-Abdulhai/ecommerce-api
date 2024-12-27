@@ -26,4 +26,4 @@ const schema = new mongoose.Schema({
 
 schema.plugin(mongoosePaginate)
 
-export const Category = mongoose.model('Category',schema)
+export const Coupon = mongoose.model('Coupon',schema)

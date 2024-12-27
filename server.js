@@ -47,7 +47,7 @@ const limiter = rateLimit({
     windowMs: 60 * 60 * 1000, // 60 minutes
     max: 100, 
     handler: (req, res, next) => {
-        next(new AppError(req.t('tooManyReq'), 429));
+        next(new AppError(req.t('server.tooManyReq'), 429));
     },
 });
 const combinedLimiter = [burstLimiter, limiter];
@@ -79,7 +79,7 @@ app.use('/api/v1/', v1Router);
 
 // 404 Error for undefined routes
 app.use('*', (req, res, next) => {
-    next(new AppError('notFoundRoute', 404));
+    next(new AppError('server.notFoundRoute', 404));
 });
 
 // Global error handler
@@ -98,5 +98,5 @@ app.use((err, req, res, next) => {
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Server is running on ${process.env.HOST}`);
+    console.log(`Server is running on port ${port}`);
 });
