@@ -35,7 +35,6 @@ Welcome to the E-Commerce API, a backend service built using **Express.js**. Thi
 ---
 
 ## Installation
-
 1. Clone the repository:
 
    ```bash
@@ -60,3 +59,4 @@ Welcome to the E-Commerce API, a backend service built using **Express.js**. Thi
 6. Or run it in production mode:
     ```bash
     npm start
+## API Endpoints
