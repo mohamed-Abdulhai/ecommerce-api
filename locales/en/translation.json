@@ -39,5 +39,51 @@
         "passwordChanged": "Password changed successfully",
         "notTrueOldPassword": "Old password not ture",
         "emailNotConfirmed":"Email was not confirmed"
-    }
+    },
+    "category":{
+        "created": "Category created successfully",
+        "updated": "Category updated successfully",
+        "deleted": "Category deleted successfully",
+        "notFound": "Category not found",
+        "alreadyExists": "Category already exists",
+        "titleRequired": "Title required in english and arabic",
+        "titleObject": "Title object required in english and arabic",
+        "slugRequired": "Slug required"
+    },
+    "image":{
+      "imageRequired":"Image required",
+      "imageType":"File must be an image"
+   },
+   "globalValidators": {
+    "slugRequired": "The slug field is required. Please provide a unique identifier for the category.",
+    "slugPattern": "The slug must only contain lowercase letters, numbers, and dashes. Example: my-example",
+    "getAllPageNumber": "The page number must be a number.",
+    "getAllPageInteger": "The page number must be an integer.",
+    "getAllPageMin": "The page number must be at least 1.",
+    "getAllLimitNumber": "The limit for items per page must be a number.",
+    "getAllLimitInteger": "The limit for items per page must be an integer.",
+    "getAllLimitMin": "The limit for items per page must be at least 1.",
+    "getAllSearchString": "The search query must be a string.",
+    "getAllSearchEmpty": "The search query must not be empty."
+    },
+    "subCategory":{
+      "created": "Subcategory created successfully.",
+      "updated": "Subcategory updated successfully.",
+      "deleted": "Subcategory deleted successfully.",
+      "notFound": "Subcategory not found.",
+      "alreadyExists": "Subcategory already exists.",
+      "notInSubcategory": "This item is not in the subcategories."
+   },
+   "brand":{
+    "created": "Brand created successfully.",
+    "updated": "Brand updated successfully.",
+    "deleted": "Brand deleted successfully.",
+    "notFound": "Brand not found.",
+    "alreadyExists": "Brand already exists.",
+    "titleRequired": "Title required",
+    "titleString": "Title String required",
+    "slugRequired": "Slug required",
+    "titleMin": "Title minmum title 3 characters",
+    "titleMax":"The maximum title 32 characters"
+   }
 }

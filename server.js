@@ -1,3 +1,5 @@
+import path from 'path';
+import fs from 'fs';
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
@@ -14,7 +16,14 @@ import { AppError } from './src/utilities/error/error.js';
 import i18next from 'i18next';
 import Backend from 'i18next-fs-backend';
 import middleware from 'i18next-http-middleware';
-import path from 'path';
+
+
+
+const uploadsFile = './uploads'
+
+if (!fs.existsSync(uploadsFile)){
+    fs.mkdirSync(uploadsFile);
+}
 
 // Initialize app and environment variables
 dotenv.config();

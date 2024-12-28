@@ -4,6 +4,7 @@ import { User } from "../../DataBase/models/user.model.js";
 import { AppError, catchError } from "../../utilities/error/error.js";
 import { generateAccessToken, generateRefreshToken } from "./auth.middleware.js";
 import { Log } from "../../DataBase/models/Log.model.js";
+import { logAction } from "../../handler/handler.js";
 
 
 
@@ -14,12 +15,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 export const register = catchError(async (req, res, next) => {
     const user = await User.create(req.body);
 
-    await Log.create({
-        actionBy: user._id,
-        action: "created",
-        collectionName: User.collection.name,
-        item: user._id,
-    });
+    logAction(user_id,'created',User,user_id);
 
     res.status(201).json({
         message: req.t("auth.UserCreated"),
@@ -130,6 +126,7 @@ export const changePassword = catchError(async(req,res,next)=>{
     if (!isMatch) return next(new AppError("auth.notTrueOldPassword", 409))
     user.password = req.body.password
     await user.save();
+    logAction(req.user.id,'updated',User,user._id)
     res.status(200).json({
         message: req.t("auth.passwordChanged"),
         statusMessage:'success'
