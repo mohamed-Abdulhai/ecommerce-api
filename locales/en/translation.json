@@ -64,7 +64,10 @@
     "getAllLimitInteger": "The limit for items per page must be an integer.",
     "getAllLimitMin": "The limit for items per page must be at least 1.",
     "getAllSearchString": "The search query must be a string.",
-    "getAllSearchEmpty": "The search query must not be empty."
+    "getAllSearchEmpty": "The search query must not be empty.",
+    "stringId": "The ID must be a valid hexadecimal string.",
+    "lengthId": "The ID must be exactly 24 characters long.",
+    "idRequired": "The ID is required."
     },
     "subCategory":{
       "created": "Subcategory created successfully.",
@@ -85,5 +88,46 @@
     "slugRequired": "Slug required",
     "titleMin": "Title minmum title 3 characters",
     "titleMax":"The maximum title 32 characters"
-   }
+   },
+   "product": {
+    "created": "Product created successfully.",
+    "updated": "Product updated successfully.",
+    "deleted": "Product deleted successfully.",
+    "notFound": "Product not found.",
+    "alreadyExists": "Product already exists.",
+    "titleRequired": "Title is required.",
+    "titleString": "Title must be a string.",
+    "slugRequired": "Slug is required.",
+    "titleMin": "Title must be at least 3 characters long.",
+    "titleMax": "Title cannot exceed 32 characters.",
+    "descriptionRequired": "Description is required.",
+    "descriptionString": "Description must be a string.",
+    "priceRequired": "Price is required.",
+    "priceNumber": "Price must be a number.",
+    "priceMin": "Price cannot be less than 0.",
+    "priceAfterDiscountNumber": "Price after discount must be a number.",
+    "priceAfterDiscountMin": "Price after discount cannot be less than 0.",
+    "stockNumber": "Stock must be a number.",
+    "stockMin": "Stock cannot be less than 0.",
+    "categoryRequired": "Category is required.",
+    "categoryString": "Category ID must be a string.",
+    "subCategoryString": "Subcategory ID must be a string.",
+    "brandString": "Brand ID must be a string."
+    },
+"coupon":{
+    "created": "Coupon created successfully",
+    "updated": "Coupon updated successfully",
+    "deleted": "Coupon deleted successfully",
+    "notFound": "Coupon not found",
+    "alreadyExists": "Coupon already exists",
+    "codeRequired":"Coupon code is required",
+    "discontNumberBase":"Discount must be a number",
+    "discountNumberMin":"Discount cannot be less than 0",
+    "discountNumberMax":"Discount cannot be more than 100",
+    "discountNumberRequired":"Discount is required",
+    "activeBoolean":"Active must be a boolean",
+    "expiresDate":"Expires date must be a valid date",
+    "expiresDateRequired":"Expires date is required"
+}
+
 }

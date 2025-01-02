@@ -24,20 +24,3 @@ export const deleteBySlugCategory = catchError(async (req,res,next)=>{
     })
 })
 
-export const updateBySlugCategory = catchError(async (req,res,next)=>{
-    const {slug} = req.params
-    const category = await Category.findOne({slug}, req.body, {new: true, runValidators: true})
-    if(!category) return next(new AppError("category.notFound", 404))
-    if(req.file){
-        if(category.image){
-            fs.unlinkSync(category.image)
-        }
-    }
-    await category.save()
-    logAction(req.user.id,'updated',Category,category._id)
-    res.json({
-        statusMessage:'success',
-        message: req.t("category.updated"),
-        data: category
-    })
-})

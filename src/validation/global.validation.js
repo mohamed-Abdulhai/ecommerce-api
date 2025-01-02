@@ -27,3 +27,15 @@ export const globalSlug = Joi.object({
             "any.required": "globalValidators.slugRequired"
         }),
 })
+
+export const globalId = Joi.object({
+    id: Joi.string()
+        .hex()
+        .length(24)
+        .required()
+        .messages({
+            "string.hex": "globalValidators.stringId",
+            "string.length": "globalValidators.lengthId",
+            "any.required": "globalValidators.idRequired",
+        }),
+});

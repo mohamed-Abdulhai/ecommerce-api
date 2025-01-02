@@ -19,13 +19,13 @@ export const getAllHandler = (model, searchFields, populateFields) => {
         const searchQuery = search
             ? { $or: searchFields.map(field => ({ [field]: { $regex: search, $options: "i" } })) }
             : {};
-
+            const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
         const options = {
             page: parseInt(page, 10),
             limit: parseInt(limit, 10),
             customLabels: {
-                totalDocs: "totalDocuments",
-                docs: "documents",
+                totalDocs: `total${capitalize(model.collection.name)}`,
+                docs: `${model.collection.name}`,
             },
             sort: { createdAt: -1 },
             populate: populateFields || [],

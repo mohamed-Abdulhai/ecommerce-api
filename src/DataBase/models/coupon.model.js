@@ -14,7 +14,6 @@ const schema = new mongoose.Schema({
     },
     active:{
         type:Boolean,
-        required:true,
         default:true
     },
     expires:{

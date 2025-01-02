@@ -8,12 +8,11 @@ export const validate = (schema) => {
     if (error) {
       const { details } = error;
 
-      const messages = details.map(i => {
+      const messages = details.map((i) => {
+        const fieldName = i.path.join('.');
         const message = i.message.replace(/["/]/g, ''); 
-        return req.t(message); 
+        return `${fieldName}: ${req.t(message)}`;
       });
-
-     
       if (req.file) {
         fs.unlinkSync(req.file.path);
       }

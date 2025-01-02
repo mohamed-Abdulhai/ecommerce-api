@@ -15,7 +15,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 export const register = catchError(async (req, res, next) => {
     const user = await User.create(req.body);
 
-    logAction(user_id,'created',User,user_id);
+    logAction(user._id,'created',User,user._id);
 
     res.status(201).json({
         message: req.t("auth.UserCreated"),

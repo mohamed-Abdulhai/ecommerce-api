@@ -1,7 +1,7 @@
 import Joi from "joi";
 
 export const addBrandSchema = Joi.object({
-    title : Joi.string().min(3).max(32).required().messages({
+    title : Joi.string().min(2).max(32).required().messages({
         "string.min": "brand.titleMin",
         "string.max": "brand.titleMax",
         "any.required": "brand.titleRequired",
@@ -10,7 +10,7 @@ export const addBrandSchema = Joi.object({
 })
 
 export const updateBrandSchema = Joi.object({
-    title : Joi.string().min(3).max(32).messages({
+    title : Joi.string().min(2).max(32).messages({
         "string.min": "brand.titleMin",
         "string.max": "brand.titleMax",
         "string.base":"titleString"

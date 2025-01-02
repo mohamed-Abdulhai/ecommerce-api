@@ -64,7 +64,10 @@
     "getAllLimitInteger":"يجب أن يكون عدد العناصر في الصفحة عددرقما'",
     "getAllLimitMin":"يجب أن يكون عدد العناصر في الصفحة على الأقل 1.",
     "getAllSearchString":"البحث يجب أن يكون نصاً.",
-    "getAllSearchEmpty":"البحث يجب ألا يكون فارغاً."
+    "getAllSearchEmpty":"البحث يجب ألا يكون فارغاً.",
+    "stringId": "يجب أن يكون المعرف سلسلة سداسية عشرية صالحة.",
+    "lengthId": "يجب أن يكون المعرف طوله 24 حرفًا بالضبط.",
+    "idRequired": "المعرف مطلوب."
    },
    "subCategory":{
       "created": "تم إنشاء التصنيف الفرعي بنجاح.",
@@ -85,5 +88,45 @@
     "slugRequired": "المعرف الفريد مطلوب.",
     "titleMin": "الحد الأدنى لطول العنوان هو 3 أحرف.",
     "titleMax": "الحد الأقصى لطول العنوان هو 32 حرفًا."
-}
+   },
+   "product": {
+        "created": "تم إنشاء المنتج بنجاح.",
+        "updated": "تم تحديث المنتج بنجاح.",
+        "deleted": "تم حذف المنتج بنجاح.",
+        "notFound": "المنتج غير موجود.",
+        "alreadyExists": "المنتج موجود بالفعل.",
+        "titleRequired": "العنوان مطلوب.",
+        "titleString": "يجب أن يكون العنوان نصيًا.",
+        "slugRequired": "المعرف مطلوب.",
+        "titleMin": "الحد الأدنى لعدد أحرف العنوان هو 3.",
+        "titleMax": "الحد الأقصى لعدد أحرف العنوان هو 32.",
+        "descriptionRequired": "الوصف مطلوب.",
+        "descriptionString": "يجب أن يكون الوصف نصيًا.",
+        "priceRequired": "السعر مطلوب.",
+        "priceNumber": "يجب أن يكون السعر رقمًا.",
+        "priceMin": "لا يمكن أن يكون السعر أقل من 0.",
+        "priceAfterDiscountNumber": "يجب أن يكون السعر بعد الخصم رقمًا.",
+        "priceAfterDiscountMin": "لا يمكن أن يكون السعر بعد الخصم أقل من 0.",
+        "stockNumber": "يجب أن يكون المخزون رقمًا.",
+        "stockMin": "لا يمكن أن يكون المخزون أقل من 0.",
+        "categoryRequired": "الفئة مطلوبة.",
+        "categoryString": "يجب أن يكون معرف الفئة نصيًا.",
+        "subCategoryString": "يجب أن يكون معرف الفئة الفرعية نصيًا.",
+        "brandString": "يجب أن يكون معرف العلامة التجارية نصيًا."
+    },
+    "coupon": {
+    "created": "تم إنشاء القسيمة بنجاح",
+    "updated": "تم تحديث القسيمة بنجاح",
+    "deleted": "تم حذف القسيمة بنجاح",
+    "notFound": "لم يتم العثور على القسيمة",
+    "alreadyExists": "القسيمة موجودة بالفعل",
+    "codeRequired": "رمز القسيمة مطلوب",
+    "discontNumberBase": "يجب أن يكون الخصم رقمًا",
+    "discountNumberMin": "الخصم لا يمكن أن يكون أقل من 0",
+    "discountNumberMax": "الخصم لا يمكن أن يكون أكثر من 100",
+    "discountNumberRequired": "الخصم مطلوب",
+    "activeBoolean": "يجب أن يكون الحقل (true او false)",
+    "expiresDate": "يجب أن يكون تاريخ الانتهاء تاريخًا صالحًا",
+    "expiresDateRequired": "تاريخ الانتهاء مطلوب"
+   }
 }

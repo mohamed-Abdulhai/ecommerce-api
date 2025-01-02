@@ -16,16 +16,19 @@ export const exitCategory = catchError(async (req,res,next)=>{
 })
 
 export const slugTheCategory = catchError(async (req,res,next) =>{
-    req.body.slug = slugify(req.body.title.en,{
-        lower:true,
-        trim:true
-    })
+    if(req.body.title.en){
+        req.body.slug = slugify(req.body.title.en,{
+            lower:true,
+            trim:true
+        })
+        return next()
+    }
     return next()
 })
 
 export const addCategoryImage = catchError(async(req,res,next) =>{
     if(req.file){
-        req.body.image = req.file.filename
+        req.body.image = req.file.path
     }
     
     return next()

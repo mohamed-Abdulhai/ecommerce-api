@@ -1,3 +1,5 @@
+import fs from "fs"
+import slugify  from 'slugify'
 import { Brand } from "../../DataBase/models/brand.model.js"
 import { AppError, catchError } from "../../utilities/error/error.js"
 
@@ -14,7 +16,7 @@ export const slugTheBrand = catchError(async (req,res,next) =>{
 
 export const addBrandLogo = catchError(async(req,res,next) =>{
     if(req.file){
-        req.body.logo = req.file.filename
+        req.body.logo = req.file.path
     }
     
     return next()

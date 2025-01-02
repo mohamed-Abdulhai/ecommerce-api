@@ -23,21 +23,3 @@ export const deleteBySlugBrand = catchError(async (req,res,next)=>{
         message: req.t("brand.deleted")
     })
 })
-
-export const updateBySlugBrand = catchError(async (req,res,next)=>{
-    const {slug} = req.params
-    const brand = await Brand.findOne({slug}, req.body, {new: true, runValidators: true})
-    if(!brand) return next(new AppError("brand.notFound", 404))
-    if(req.file){
-        if(brand.logo){
-            fs.unlinkSync(brand.logo)
-        }
-    }
-    await brand.save()
-    logAction(req.user.id,'updated',Brand,brand._id)
-    res.json({
-        statusMessage:'success',
-        message: req.t("brand.updated"),
-        data: brand
-    })
-})

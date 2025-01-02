@@ -14,16 +14,6 @@ export const addCategorySchema = Joi.object({
 });
 
 export const updateCategorySchema = Joi.object({
-    title: Joi.object({
-        ar: Joi.string().required().messages({
-            "string.empty": "category.titleRequired", 
-        }),
-        en: Joi.string().required().messages({
-            "string.empty": "Title in English is required.", 
-        }),
-    }).messages({
-        "object.base": "category.titleObject", 
-    }),
     slug: Joi.string()
         .required()
         .pattern(/^[a-z0-9-]+$/)
