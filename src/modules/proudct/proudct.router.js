@@ -6,6 +6,8 @@ import { addProductSchema, updateProductSchema } from "./proudct.validation.js";
 import { validate } from "../../middlewares/validation.js";
 import { getAllSchema, globalSlug } from "../../validation/global.validation.js";
 import { Role } from "../../utilities/enum/userRole.enum.js";
+import { isTheCategoryExists } from "../subCategory/subCategory.middlware.js";
+import { addFilesToRequestBodyInProuduct, ExistProduct, isTheBraandExist, validateImageFiles } from "./proudct.middleware.js";
 
 const router = Router()
 
@@ -13,15 +15,10 @@ router.route('/')
     .post(authentication,authorize(Role.ADMIN),upload.fields([
         { name: 'coverImage',maxCount:1},
         { name: 'images',maxCount:5}
-    ]),validate(addProductSchema),addProduct)
+    ]),validate(addProductSchema),validateImageFiles(true),addFilesToRequestBodyInProuduct,ExistProduct,isTheCategoryExists,isTheCategoryExists,isTheBraandExist,addProduct)
     .get(validate(getAllSchema),getAllProducts)
 router.route('/:slug')
     .get(validate(globalSlug),getProduct)
-    .delete(validate(globalSlug),deleteProduct)
-    .put(authentication,authorize(Role.ADMIN),upload.fields([
-        { name: 'coverImage', maxCount:1},
-        { name: 'images', maxCount:5}
-        ]),validate(updateProductSchema),updateProduct)
-    
-
+    .delete(authentication,authorize(Role.ADMIN),validate(globalSlug),deleteProduct)
+    .put(authentication,authorize(Role.ADMIN),validate(updateProductSchema),updateProduct)
 export default router

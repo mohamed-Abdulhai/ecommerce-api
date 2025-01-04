@@ -4,7 +4,7 @@ export const addProductSchema = Joi.object({
     title: Joi.object({
         ar: Joi.string()
             .min(3)
-            .max(32)
+            .max(200)
             .required()
             .messages({
                 "string.base": "product.titleString",
@@ -14,7 +14,7 @@ export const addProductSchema = Joi.object({
             }),
         en: Joi.string()
             .min(3)
-            .max(32)
+            .max(200)
             .required()
             .messages({
                 "string.base": "product.titleString",
@@ -26,12 +26,6 @@ export const addProductSchema = Joi.object({
         "object.base": "product.titleRequired",
         "any.required": "product.titleRequired"
     }),
-    slug: Joi.string()
-        .required()
-        .messages({
-            "string.base": "product.titleString",
-            "any.required": "product.slugRequired"
-        }),
     description: Joi.object({
         ar: Joi.string()
             .required()
@@ -57,12 +51,15 @@ export const addProductSchema = Joi.object({
             "number.min": "product.priceMin",
             "any.required": "product.priceRequired"
         }),
-    priceAfterDiscount: Joi.number()
+        priceAfterDiscount: Joi.number()
         .min(0)
+        .max(Joi.ref('price'))
         .optional()
         .messages({
-            "number.base": "product.priceAfterDiscountRequired",
-            "number.min": "product.priceAfterDiscountMin"
+            "any.required": "product.priceAfterDiscountRequired",
+            "number.min": "product.priceAfterDiscountMin",
+            "number.max": "product.priceAfterDiscountMax",
+            "number.base":"priceAfterDiscountNumber"
         }),
     stock: Joi.number()
         .min(0)
@@ -90,28 +87,6 @@ export const addProductSchema = Joi.object({
 });
 
 export const updateProductSchema = Joi.object({
-    title: Joi.object({
-        ar: Joi.string()
-            .min(3)
-            .max(32)
-            .optional()
-            .messages({
-                "string.base": "product.titleString",
-                "string.min": "product.titleMin",
-                "string.max": "product.titleMax"
-            }),
-        en: Joi.string()
-            .min(3)
-            .max(32)
-            .optional()
-            .messages({
-                "string.base": "product.titleString",
-                "string.min": "product.titleMin",
-                "string.max": "product.titleMax"
-            }),
-    }).optional().messages({
-        "object.base": "product.titleRequired"
-    }),
     slug: Joi.string()
         .optional()
         .messages({

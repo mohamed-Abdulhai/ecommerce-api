@@ -38,7 +38,9 @@
         "tokenRefReshed": "Token was successfully refreshed",
         "passwordChanged": "Password changed successfully",
         "notTrueOldPassword": "Old password not ture",
-        "emailNotConfirmed":"Email was not confirmed"
+        "emailNotConfirmed":"Email was not confirmed",
+        "roleValid":"Role is unvalid",
+        "roleRequired":"Role is required"
     },
     "category":{
         "created": "Category created successfully",
@@ -50,10 +52,12 @@
         "titleObject": "Title object required in english and arabic",
         "slugRequired": "Slug required"
     },
-    "image":{
-      "imageRequired":"Image required",
-      "imageType":"File must be an image"
-   },
+    "image": {
+    "imageRequired": "Image required",
+    "imageType": "File must be an image",
+    "invalidCoverImageType": "Cover image must be an image file",
+    "invalidImageType": "All images must be image files"
+    },
    "globalValidators": {
     "slugRequired": "The slug field is required. Please provide a unique identifier for the category.",
     "slugPattern": "The slug must only contain lowercase letters, numbers, and dashes. Example: my-example",
@@ -99,20 +103,22 @@
     "titleString": "Title must be a string.",
     "slugRequired": "Slug is required.",
     "titleMin": "Title must be at least 3 characters long.",
-    "titleMax": "Title cannot exceed 32 characters.",
+    "titleMax": "Title cannot exceed 200 characters.",
     "descriptionRequired": "Description is required.",
     "descriptionString": "Description must be a string.",
     "priceRequired": "Price is required.",
     "priceNumber": "Price must be a number.",
     "priceMin": "Price cannot be less than 0.",
     "priceAfterDiscountNumber": "Price after discount must be a number.",
-    "priceAfterDiscountMin": "Price after discount cannot be less than 0.",
     "stockNumber": "Stock must be a number.",
     "stockMin": "Stock cannot be less than 0.",
     "categoryRequired": "Category is required.",
     "categoryString": "Category ID must be a string.",
     "subCategoryString": "Subcategory ID must be a string.",
-    "brandString": "Brand ID must be a string."
+    "brandString": "Brand ID must be a string.",
+    "priceAfterDiscountRequired": "Discounted price must be a number.",
+      "priceAfterDiscountMin": "Discounted price cannot be negative.",
+      "priceAfterDiscountMax": "Discounted price cannot exceed the original price."
     },
 "coupon":{
     "created": "Coupon created successfully",
@@ -128,6 +134,12 @@
     "activeBoolean":"Active must be a boolean",
     "expiresDate":"Expires date must be a valid date",
     "expiresDateRequired":"Expires date is required"
-}
+},
+    "log":{
+        "deleted": "Log deleted successfully",
+        "notFound": "Log not found",
+        "deletedAll":"Logs deleted successfully",
+        "noLogs":"No logs found to delete"
+    }
 
 }

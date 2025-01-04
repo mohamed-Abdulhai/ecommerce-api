@@ -57,4 +57,10 @@ Welcome to the E-Commerce API, a backend service built using **Express.js**. Thi
 6. Or run it in production mode:
     ```bash
     npm start
+## API Documentation
+
+You can access the full API documentation via [Postman Docs](https://documenter.getpostman.com/view/29809197/2sAYJ7hfBR).
+
+This documentation contains details on all available endpoints, their parameters, and usage examples.
+
 ## API Endpoints

@@ -4,22 +4,28 @@ import { AppError, catchError } from "../../utilities/error/error.js";
 import {User} from "../../DataBase/models/user.model.js"
 // Check if email already exists
 export const checkExistEmail = catchError(async (req, res, next) => {
+    if(req.body.email){
     const email = req.body.email;
     const user = await User.findOne({ email });
     if (user) {
         return next(new AppError("auth.emailExists", 409 )); 
     }
-    next();
+    return next();
+    }
+    return next()
 });
 
 // Check if phone number already exists
 export const checkExistPhone = catchError(async (req, res, next) => {
+    if(req.body.phone){
     const phone = req.body.phone;
     const user = await User.findOne({ phone });
     if (user) {
         return next(new AppError("auth.phoneExists", 409)); 
     }
-    next();
+    return next()
+    }
+    return next()
 });
 
 // Authentication middleware
@@ -39,7 +45,7 @@ export const authentication = catchError(async (req, res, next) => {
             return next(new AppError("auth.userNotFound", 404)); 
         }
         req.user = decoded;
-        next();
+        return next()
     });
 });
 
@@ -49,7 +55,7 @@ export const authorize = (...roles) => {
         if (!roles.includes(req.user.role)) {
             return next(new AppError("auth.unauthorize", 403)); 
         }
-        next();
+        return next()
     };
 };
 
@@ -59,7 +65,7 @@ export const checkEmailOrPhone = catchError(async (req, res, next) => {
     if (!email && !phone) {
         return next(new AppError("auth.emailOrPhone", 422)); 
     }
-    next();
+    return next()
 });
 
 // Generate access token
@@ -86,5 +92,5 @@ export const generateRefreshToken = (id, role) => {
 export const hashPassword = catchError(async (req, res, next) => {
     const hashedPassword = bcrypt.hashSync(req.body.password, Number(process.env.SALT));
     req.body.password = hashedPassword;
-    next();
+    return next()
 });
