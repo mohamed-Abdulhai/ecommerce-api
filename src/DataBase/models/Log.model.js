@@ -19,7 +19,7 @@ const schema = new mongoose.Schema({
     item:{
         type:mongoose.Types.ObjectId,
         }
-},{timestamps:true})
+},{timestamps:true,versionKey:false})
 
 schema.plugin(mongoosePaginate)
 
