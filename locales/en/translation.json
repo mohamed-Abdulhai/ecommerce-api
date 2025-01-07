@@ -132,7 +132,11 @@
         "discountNumberRequired": "Discount is required.",
         "activeBoolean": "Active must be a boolean.",
         "expiresDate": "Expires date must be a valid date.",
-        "expiresDateRequired": "Expires date is required."
+        "expiresDateRequired": "Expires date is required.",
+        "invalidCoupon": "Invalid coupon code. Please provide a valid coupon.",
+        "inactive": "This coupon is no longer active. Please use a different coupon.",
+        "expired": "This coupon has expired. Please use a valid coupon.",
+        "applied": "Coupon applied successfully. Your discount has been applied to the total price."
     },
     "log": {
         "deleted": "Log deleted successfully.",

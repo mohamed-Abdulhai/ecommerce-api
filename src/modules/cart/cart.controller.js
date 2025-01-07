@@ -1,4 +1,5 @@
 import { Cart } from "../../DataBase/models/cart.model.js";
+import { Coupon } from "../../DataBase/models/coupon.model.js";
 import { Product } from "../../DataBase/models/product.model.js";
 import { AppError, catchError } from "../../utilities/error/error.js";
 
@@ -31,7 +32,7 @@ export const addToCart = catchError(async (req, res, next) => {
     await cart.save();
 
     res.status(200).json({
-        status: "success",
+        statusMessage: "success",
         message: req.t("cart.itemAdded"),
         data: cart,
     });
@@ -43,9 +44,11 @@ export const getCartByUser = catchError(async (req, res, next) => {
     if (!cart) {
         return next(new AppError("cart.notFound", 404));
     }
+    cart.totalPrice = await calculateTotalPrice(cart.items);
+    await cart.save();
 
     res.status(200).json({
-        status: "success",
+        statusMessage: "success",
         data: cart,
     });
 });
@@ -70,7 +73,7 @@ export const updateCartItem = catchError(async (req, res, next) => {
         await cart.save();
 
         res.status(200).json({
-            status: "success",
+            statusMessage: "success",
             message: req.t("cart.updated"),
             data: cart,
         });
@@ -95,7 +98,7 @@ export const deleteFromCart = catchError(async (req, res, next) => {
         await cart.save();
 
         res.status(200).json({
-            status: "success",
+            statusMessage: "success",
             message: req.t("cart.itemDeleted"),
             data: cart,
         });
@@ -116,7 +119,7 @@ export const clearTheCart = catchError(async (req, res, next) => {
     }
 
     res.status(200).json({
-        status: "success",
+        statusMessage: "success",
         message: req.t("cart.cleard"),
         data: cart,
     });
@@ -175,16 +178,56 @@ export const getUserCartByAdmin = catchError(async (req, res, next) => {
     }
 
     res.status(200).json({
-        status: "success",
+        statusMessage: "success",
         data: cart,
     });
 });
+
+export const applyCoupon = catchError(async (req, res, next) => {
+    const { code } = req.body;
+
+    if (!code) {
+        return next(new AppError("coupon.invalidCoupon", 400));
+    }
+
+    const cart = await Cart.findOne({ user: req.user.id }).populate("items.product");
+    if (!cart) {
+        return next(new AppError("cart.notFound", 404));
+    }
+
+    const coupon = await Coupon.findOne({ code });
+    if (!coupon) {
+        return next(new AppError("coupon.notFound", 404));
+    }
+
+    if (!coupon.active) {
+        return next(new AppError("coupon.inactive", 400));
+    }
+
+    if (coupon.expires < new Date()) {
+        return next(new AppError("coupon.expired", 400));
+    }
+
+    const discountAmount = (cart.totalPrice * coupon.discount) / 100;
+
+    cart.discount = discountAmount;
+    cart.totalPriceAfterDiscount = cart.totalPrice - discountAmount;
+
+    await cart.save();
+
+    res.status(200).json({
+        status: "success",
+        message: req.t("coupon.applied"),
+        data: cart,
+    });
+});
+
 
 const calculateTotalPrice = async (items) => {
     const productPrices = await Promise.all(
         items.map(async (item) => {
             const product = await Product.findById(item.product);
-            return product.price * item.quantity;
+            return product.priceAfterDiscount * item.quantity;
         })
     );
 

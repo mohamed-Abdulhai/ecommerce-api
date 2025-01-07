@@ -51,6 +51,9 @@ Welcome to the E-Commerce API, a backend service built using **Express.js**. Thi
    NODE_ENV=development-or-production
    MONGO_URL=Your-mongoDB-URL
    CLIENT_URL=The-frontend-url-that-you-are-runing-in-it
+   REFRESH_TOKEN_SECRET_KEY=Youre-refresh-secrets-key
+   ACCESS_TOKEN_SECRET_KEY=your-access-token-secret-key
+   SALT=your-salt-number
 5. Start the server in development mode:
     ```bash
     nmp run dev

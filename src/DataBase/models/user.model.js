@@ -15,6 +15,43 @@ const schema = new mongoose.Schema({
     password:{
         type:String,
     },
+    phone:{
+        type: String,
+    },
+    role:{
+        type: Number,
+        enum: [Role.ADMIN,Role.STAFF,Role.USER],
+        default: Role.USER
+    },
+    addresses: [ 
+        {
+            street: {
+                type: String,
+                required: true,
+            },
+            city: {
+                type: String,
+                required: true,
+            },
+            country: {
+                type: String,
+                required: true,
+            },
+            postalCode: {
+                type: String,
+            },
+            isDefault: { 
+                type: Boolean,
+                default: false,
+            },
+        },
+    ],
+    wishlist: [ 
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Product', 
+        },
+    ],
     isActive: {
         type: Boolean,
         default: true
@@ -23,17 +60,7 @@ const schema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    role:{
-        type: Number,
-        enum: [Role.ADMIN,Role.STAFF,Role.USER],
-        default: Role.USER
-    },
-    address:{
-        type: String,
-    },
-    phone:{
-        type: String,
-    },
+
 
 },{timestamps:true,versionKey:false})
 

@@ -55,3 +55,13 @@ export const updateCartSchema = Joi.object({
             "any.required": "cart.quantityRequired",
         }),
 });
+
+
+export const applyCouponSchema = Joi.object({
+    code: Joi.string()
+        .required()
+        .messages({
+            "string.empty": "coupon.codeRequired",
+            "any.required": "coupon.codeRequired",
+        }),
+})
