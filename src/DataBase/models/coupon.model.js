@@ -20,7 +20,6 @@ const schema = new mongoose.Schema({
         type:Date,
         required:true
     },
-
 },{timestamps:true,versionKey:false})
 
 schema.plugin(mongoosePaginate)

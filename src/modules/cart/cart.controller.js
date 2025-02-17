@@ -216,7 +216,7 @@ export const applyCoupon = catchError(async (req, res, next) => {
     await cart.save();
 
     res.status(200).json({
-        status: "success",
+        statusMessage: "success",
         message: req.t("coupon.applied"),
         data: cart,
     });
@@ -227,7 +227,10 @@ const calculateTotalPrice = async (items) => {
     const productPrices = await Promise.all(
         items.map(async (item) => {
             const product = await Product.findById(item.product);
-            return product.priceAfterDiscount * item.quantity;
+            if (!product) return 0; 
+
+            const price = product.priceAfterDiscount ?? product.price; 
+            return price * item.quantity;
         })
     );
 

@@ -1,4 +1,5 @@
 import path from 'path';
+import { fileURLToPath } from 'url';
 import fs from 'fs';
 import express from 'express';
 import dotenv from 'dotenv';
@@ -17,18 +18,24 @@ import i18next from 'i18next';
 import Backend from 'i18next-fs-backend';
 import middleware from 'i18next-http-middleware';
 
+// Get the directory name of the current module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
+const uploadsFile = './uploads';
 
-const uploadsFile = './uploads'
-
-if (!fs.existsSync(uploadsFile)){
+if (!fs.existsSync(uploadsFile)) {
     fs.mkdirSync(uploadsFile);
 }
+
 
 // Initialize app and environment variables
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
+
+// static assets
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 // Middleware configurations
 app.use(express.json());
@@ -103,7 +110,6 @@ app.use((err, req, res, next) => {
         stack: process.env.NODE_ENV === 'development' ? err.stack : undefined, 
     });
 });
-
 
 // Start the server
 app.listen(port, () => {
